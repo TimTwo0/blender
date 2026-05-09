@@ -96,32 +96,6 @@ let quantity_of_batterys = Number(localStorage.getItem("quantity_of_batterys"))
 let quantity_of_dsts = Number(localStorage.getItem("quantity_of_dsts"))
 let quantity_of_videos = Number(localStorage.getItem("quantity_of_videos"))
 
-score = 148867
-format_score = score
-maxScore = 0
-bln_per_sec = 0
-cursor_price = 0 
-old_blender_price = 0 
-ps5_price = 0 
-battery_price = 0 
-dst_price = 0 
-video_price = 0 
-onclick_score = 0
-onclick_upgrade_function1 = "false"
-cursor_score = 0
-blenders_speed = 0
-click_update1_remember = "false"
-cursor_update1_remember = "false"
-blenders_speed_update1_remember = "false"
-blenders_speed_update2_remember = "false"
-click_update2_remember = "false"
-quantity_of_cursors = 0
-quantity_of_old_blenders = 0
-quantity_of_ps5s = 0
-quantity_of_batterys = 0
-quantity_of_dsts = 0
-quantity_of_videos = 0
-
 localStorage.clear()
 
 localStorage.setItem("score", score)
@@ -309,7 +283,7 @@ printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_
 
 setInterval(function(){
 
-    score = 148867
+score = 67,6767676767676767
 format_score = score
 maxScore = 0
 bln_per_sec = 0
