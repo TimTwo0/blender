@@ -1,6 +1,9 @@
 let circle = document.getElementById('circle')
 let shop = document.getElementById('shop')
 let onclick_score = Number(localStorage.getItem('onclick_score'))
+
+let patch_note = document.getElementById('patch_note')
+    patch_note.classList.add('hide')
 let onclick_upgrade_function1 = Number(localStorage.getItem('onclick_upgrade_function1'))
 
 let cursor_score = Number(localStorage.getItem('cursor_score'))
@@ -913,4 +916,9 @@ if(num >= 1e3) {
    return Number((num).toFixed(1))
  }
  
+}
+
+
+function patch_note_visibility() {
+    patch_note.classList.toggle('hide')
 }

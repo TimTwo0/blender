@@ -2,6 +2,43 @@ body {
   background-image: url('https://cookieclicker.wiki.gg/images/thumb/BgPurple.jpg/320px-BgPurple.jpg?32cf96');
 }
 
+.patch_note_button {
+  position: fixed;
+  left: 5px;
+  bottom: 30px;
+  font-size: 17px;
+  font-family: Impact;
+  color: rgb(97, 97, 97);
+  background-color: rgb(153, 153, 153);
+  width: 120px;
+  height: 27px;
+  text-align: center;
+  border: 2px solid black;
+  padding-top: 6px;
+  cursor: pointer;
+  transition: all .1s;
+}
+
+.patch_note {
+  position: relative;
+  bottom: 257px;
+  right: 2px;
+  color: rgb(66, 66, 66);
+  background-color: rgb(133, 133, 133);
+  width: 220px;
+  height: 220px;
+  overflow-y: auto;
+  overflow-x: visible;
+  font-family: system-ui;
+  font-size: 14px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-top: 6px;
+  cursor: default;
+  transition: all .1s;
+}
+
 .version {
   opacity: 0.5;
   color: azure;
