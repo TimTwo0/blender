@@ -1,0 +1,289 @@
+body {
+  background-image: url('https://cookieclicker.wiki.gg/images/thumb/BgPurple.jpg/320px-BgPurple.jpg?32cf96');
+}
+
+.version {
+  opacity: 0.5;
+  color: azure;
+  font-family: Impact;
+  font-size: 22px;
+  letter-spacing: 2px;
+  position: fixed;
+  text-align: left;
+  bottom: 0px;
+}
+
+.blender_shop {
+  font-size: 25px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.circle {
+  position: relative;    
+  border-radius: 50%;
+  background-image: url('https://www.ariete.net/media/images/product/main/ariete-585-nero-part-tazza-piedini-a4703113be01a382a2a2ad472c55cf80.jpg');
+  background-size: cover;
+  color: none;
+  height: 375px;
+  width:  375px;
+  top: 200px;
+  left: 25px;
+  transition: all .3s;
+  cursor: pointer;
+  box-shadow: 5px 10px 30px black;
+  scale: 1;
+}
+
+.circle:hover {
+
+}
+
+.clickAnimation {
+  transform: scale(0.95);
+}
+
+.score {
+    font-family: Arial black;
+    color: aliceblue;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 75px;
+    text-align: center;
+    width: 475px;
+    font-size: 25px;
+    top: -325px;
+    right: 10px;
+}
+
+.score_per_sec {
+    font-size: 18px;
+    color: aliceblue;
+    font-family: Comic Sans MS;
+    position: relative;
+    height: 75px;
+    text-align: center;
+    width: 475px;
+    font-size: 25px;
+    top: -365px;
+    right: 10px;
+}
+
+.shop {
+  background-color: rgba(78, 56, 34, 0.9);
+  color: aliceblue;
+  opacity: 1;
+  height: 1800px;       /*100vh*/
+  width: 250px;
+  min-width: 100px;
+  position: absolute;
+  right: 0px;
+  top: -24px;
+  font-size: large;
+  font-family: sans-serif;
+  padding-top: 30px;
+  text-align: center;
+  border: 3px solid black;
+  transition: all .2s;
+}
+
+.toggle_shop {
+  width: 10px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle_button1 {
+  position: absolute;
+  right: 230px;
+  top: 360px;
+  height: 40px;
+  font-size: 13px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(137, 117, 100);
+  background-color: rgb(85, 55, 35);
+  rotate: -90deg;
+  width: 90px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.toggle_button2 {
+  position: absolute;
+  right: -20px;
+  top: 340px;
+  height: 40px;
+  font-size: 13px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(137, 117, 100);
+  background-color: rgb(85, 55, 35);
+  rotate: -90deg;
+  width: 90px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all .2s;
+}
+
+.toggle_button2_hide {
+opacity: 1;
+pointer-events: all;
+}
+
+.toggle_button2_show {
+opacity: 0;
+pointer-events: all;
+}
+
+.toggle_button1_hide {
+ opacity: 0;
+ pointer-events: none;
+}
+
+.item{
+   background-color: rgba(0, 0, 0, 0.7);
+   height: 60px;
+   margin-bottom: 1px;
+}
+
+.name {
+  color: white;
+  position: relative;
+  left: 10px;
+  text-align: left;
+  font-family: Arial Black;
+  font-size: x-large;
+}
+
+.buy {
+  position: relative;
+  left: 105px;
+  bottom: 20px;
+  color: forestgreen;
+  background-color: rgb(12, 52, 12);
+  width: 70px;
+  cursor: pointer;
+  transition: all .1s;
+}
+
+.buy:hover {
+  text-shadow: 0px 0px 10px rgb(68, 255, 0);
+}
+
+.price {
+  color: white;
+  position: relative;
+  right: 62px;
+  font-family: system-ui;
+}
+
+.quantity {
+  color: rgba(255, 255, 255, 0.1);
+  font-family: impact;
+  position: relative;
+  text-align: end;
+  bottom: 62px;
+  right: 5px;
+  font-size: xx-large;
+  pointer-events: none;
+}
+
+.img {
+  width: 25px;
+  position: relative;
+  right: 110px;
+  bottom: 83px;
+  pointer-events: none;
+}
+
+.update_window {
+    height: 150px;
+    background-color: rgb(59, 38, 24);
+    padding-top: 15px;
+    padding-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 243px;
+    max-height: 4000px;
+    gap: 5px;
+    border: 2px solid black;
+}
+
+.update {
+  position: relative;
+  color: black;
+  left: 5px;
+  background-color: rgb(126, 88, 46);
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-family: sans-serif;
+  transform: all .1s;
+  border: 2px solid black;
+}
+
+.update:hover {
+  background-color: rgb(80, 56, 28);
+}
+
+.update:hover .info_update {
+opacity: 1;
+}
+
+.info_update {
+  color: aliceblue;
+  border: 2px solid black;
+  pointer-events: none;
+  font-family: system-ui;
+  background-color: rgba(60, 41, 29, 0.9);
+  font-size: 13px;
+  width: 200px;
+  height: 75px;
+  border-radius: 5px;
+  position: relative;
+  bottom: 25px;
+  right: 210px;
+  opacity: 0;
+  transition: all .15s;
+  z-index: 1;
+  padding-top: 15px;
+  margin-top: -10px;
+}
+
+
+.item:hover .info_item{
+ opacity: 1;
+}
+
+.info_item {
+  color: aliceblue;
+  border: 2px solid black;
+  pointer-events: none;
+  font-family: system-ui;
+  background-color: rgba(60, 41, 29, 0.9);
+  font-size: 13px;
+  width: 250px;
+  height: 110px;
+  border-radius: 5px;
+  position: relative;
+  bottom: 145px;
+  right: 260px;
+  opacity: 0;
+  transition: all .15s;
+  z-index: 1;
+  padding-top: 15px;
+  margin-top: -10px;
+}
+
+.hide {
+  display: none;
+}

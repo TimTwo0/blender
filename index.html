@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ <div class="circle" id="circle" onclick="onclickCircle()"></div>
+   <div class="score" id="score"></div>
+   <div class="score_per_sec" id="score_per_second"></div>
+
+               <div class="toggle_button2" id="toggle_button2" onclick="toggleShop2()">close / open shop?</div>
+
+               <div class="version">V.1.0 (Beta)</div>
+
+    <div class="shop" id="shop">
+           <h4 class="blender_shop">Blender's shop:</h4>
+                         <div class="toggle_button1" id="toggle_button1" onclick="toggleShop()">close / open shop?</div>
+        <br><br>
+       <div class="update_window">
+
+           <div class="update" id="click_update1" onclick="click_update1()">upd
+
+           <div class="info_update" id="info1">Click gain +1 blender.<br><br>price - 200 blenders</div>
+
+           </div>
+
+
+                   <div class="update" id="cursor_update1" onclick="cursor_update1()">upd
+
+                   <div class="info_update" id="info2">Every cursor gain 2x more blender/sec.<br><br>price - 1000 blenders</div>
+
+                   </div>
+
+                                <div class="update" id="blenders_speed_update1" onclick="blenders_speed_update1()">upd
+
+                                  <div class="info_update" id="info3">Blenders production multiplier +5%.<br><br>price - 30k blenders</div>
+
+                              </div>
+
+                                <div class="update" id="blenders_speed_update2" onclick="blenders_speed_update2()">upd
+
+                                  <div class="info_update" id="info4">Blenders production multiplier +5%.<br><br>price - 70k blenders</div>
+
+                              </div>
+
+
+                                 <div class="update" id="click_update2" onclick="click_update2()">upd
+
+                                    <div class="info_update" id="info5">Click gain 15% of blenders per second<br><br>price - 810k blenders</div>
+
+                                </div>
+
+          </div>
+        
+        
+        <br><br><br><br><br>
+
+          <div class="item" id="item1">
+                       <div class="name">Cursor</div>
+                       <div class="price" id="price_of_cursor"></div>
+                       <div class="buy" onclick="buyCursor()">Buy</div>
+                       <div class="quantity" id="quantity_of_cursors"></div>
+                       <img class="img" src="images/blender_emoji.png">
+                       <div class="info_item" id="cursor_info"></div>
+          </div>
+
+           <div class="item" id="item2">
+                       <div class="name" >Old Blender</div>
+                       <div class="price" id="price_of_blender"></div>
+                       <div class="buy" onclick="buyOldBlender()">Buy</div>
+                       <div class="quantity" id="quantity_of_old_blenders"></div>
+                       <img class="img" src="images/blender_emoji.png">
+                       <div class="info_item" id="old_blender_info"></div>
+          </div>
+
+             <div class="item" id="item3">
+                       <div class="name" >PS5</div>
+                       <div class="price" id="price_of_ps5"></div>
+                       <div class="buy" onclick="buyPS5()">Buy</div>
+                       <div class="quantity" id="quantity_of_ps5"></div>
+                       <img class="img" src="images/blender_emoji.png">
+                       <div class="info_item" id="ps5_info"></div>
+          </div>
+
+                       <div class="item" id="item4">
+                       <div class="name" >Battery</div>
+                       <div class="price" id="price_of_battery"></div>
+                       <div class="buy" onclick="buyBattery()">Buy</div>
+                       <div class="quantity" id="quantity_of_battery"></div>
+                       <img class="img" src="images/blender_emoji.png">
+                       <div class="info_item" id="battery_info"></div>
+            </div>
+
+                       <div class="item" id="item5">
+                       <div class="name" >DST</div>
+                       <div class="price" id="price_of_dst"></div>
+                       <div class="buy" onclick="buyDST()">Buy</div>
+                       <div class="quantity" id="quantity_of_dsts"></div>
+                       <img class="img" src="images/blender_emoji.png">
+                       <div class="info_item" id="dst_info"></div>
+
+
+              </div>
+
+                                   
+                       <div class="item" id="item6">
+                       <div class="name" >Video</div>
+                       <div class="price" id="price_of_video"></div>
+                       <div class="buy" onclick="buyVideo()">Buy</div>
+                       <div class="quantity" id="quantity_of_videos"></div>
+                       <img class="img" src="images/blender_emoji.png">
+                       <div class="info_item" id="video_info"></div>
+
+              </div>
+
+
+        </div>
+
+
+</body>
+
+<script src="script.js" defer></script>
+</html>
