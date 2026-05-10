@@ -188,69 +188,70 @@ quantity_of_computers = 0
 quantity_of_generators = 0
 localStorage.clear() */
 
-if (score == 0) {
+if (score == 0 || score == null) {
     score = 0
 }       
 
-if(cursor_price == 0) {
+if(cursor_price == 0 || cursor_price == null) {
   cursor_price = 50
 }
 
-if(old_blender_price == 0) {
+if(old_blender_price == 0 || old_blender_price == null) {
   old_blender_price = 150
 }
 
-if(ps5_price == 0) {
+if(ps5_price == 0 || ps5_price == null) {
   ps5_price = 1150
 }
 
-if(battery_price == 0) {
+if(battery_price == 0 || battery_price == null) {
   battery_price = 11500
 }
 
-if(dst_price == 0) {
+if(dst_price == 0 || dst_price == null) {
   dst_price = 238500
 }
 
-if(video_price == 0) {
+if(video_price == 0 || video_price == null) {
   video_price = 1585000
 }
 
-if(new_blender_price == 0) {
+if(new_blender_price == 0 || new_blender_price == null) {
   new_blender_price = 20000000
 }
 
-if(computer_price == 0) {
+if(computer_price == 0 || computer_price == null) {
   computer_price = 313000000
 }
 
-if(generator_price == 0) {
+if(generator_price == 0 || generator_price == null) {
   generator_price = 5100000000
 }
 
-if (bln_per_sec == 0) {
+if (bln_per_sec == 0 || bln_per_sec == null) {
     bln_per_sec = 0
 }     
 
-if (onclick_score == 0) {
+if (onclick_score == 0 || onclick_score == null) {
     onclick_score = 1
 }       
 
-if (cursor_score == 0) {
+if (cursor_score == 0 || cursor_score == null) {
     cursor_score = 0.5
 }
 
-if (old_blender_score == 0) {
+if (old_blender_score == 0 || old_blender_score == null) {
     old_blender_score = 2
 }
 
-if (ps5_score == 0) {
+if (ps5_score == 0 || ps5_score == null) {
     ps5_score = 20
 }
 
-if (blenders_speed == 0){
+if (blenders_speed == 0 || blenders_speed == null){
     blenders_speed = 1
 }
+
 
 
 if (click_update1_remember == "true") {
