@@ -1121,7 +1121,7 @@ document.addEventListener("visibilitychange", function () {
 
         let secondsPassed = (now - lastTime) / 1000
 
-        score += secondsPassed * bln_per_sec
+        score += (secondsPassed * bln_per_sec) * 0.9
 
     localStorage.removeItem("lastTime")
 
