@@ -148,6 +148,10 @@ let quantity_of_generators = Number(localStorage.getItem("quantity_of_generators
 
 downloadStorage()
 
+/*
+let wipeAllPlayers = true
+
+if (wipeAllPlayers) {
 
  score = 0
 format_score = score
@@ -186,7 +190,12 @@ quantity_of_videos = 0
 quantity_of_new_blenders = 0
 quantity_of_computers = 0
 quantity_of_generators = 0
-localStorage.clear() 
+
+    localStorage.clear()
+     wipeAllPlayers = false
+
+}
+*/
 
 if (score == 0 || score == null) {
     score = 0
