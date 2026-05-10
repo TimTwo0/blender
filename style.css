@@ -216,10 +216,14 @@ pointer-events: all;
 }
 
 .price {
-  color: white;
+  color: rgb(174, 41, 41);
   position: relative;
   right: 62px;
   font-family: system-ui;
+}
+
+.green_price {
+    color: rgb(74, 174, 41);
 }
 
 .quantity {

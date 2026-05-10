@@ -4,9 +4,11 @@ let onclick_score = Number(localStorage.getItem('onclick_score'))
 
 let patch_note = document.getElementById('patch_note')
     patch_note.classList.add('hide')
+
 let onclick_upgrade_function1 = Number(localStorage.getItem('onclick_upgrade_function1'))
 
 let cursor_score = Number(localStorage.getItem('cursor_score'))
+let old_blender_score = Number(localStorage.getItem('old_blender_score'))
 let blenders_speed = Number(localStorage.getItem('blenders_speed'))
 
 
@@ -20,6 +22,8 @@ let visibility_cursor_update1 = document.getElementById('cursor_update1')
 let visibility_blenders_speed_update1 = document.getElementById('blenders_speed_update1')
 let visibility_blenders_speed_update2 = document.getElementById('blenders_speed_update2')
 let visibility_click_update2 = document.getElementById('click_update2')
+let visibility_cursor_update2 = document.getElementById('cursor_update2')
+let visibility_old_blender_update1 = document.getElementById('old_blender_update1')
 
 
 let printScore = document.getElementById('score')
@@ -65,6 +69,12 @@ blenders_speed_update2_remember = localStorage.getItem('blenders_speed_update2_r
 let click_update2_remember = "false"
 click_update2_remember = localStorage.getItem('click_update2_remember')
 
+let cursor_update2_remember = "false"
+cursor_update2_remember = localStorage.getItem('cursor_update2_remember')
+
+let old_blender_update1_remember = "false"
+old_blender_update1_remember = localStorage.getItem('old_blender_update1_remember')
+
 
 
 let bln_per_sec = Number(localStorage.getItem("blenders_per_sec"))
@@ -100,35 +110,6 @@ let quantity_of_dsts = Number(localStorage.getItem("quantity_of_dsts"))
 let quantity_of_videos = Number(localStorage.getItem("quantity_of_videos"))
 
 
-score = 0
-format_score = score
-maxScore = 0
-bln_per_sec = 0
-cursor_price = 0 
-old_blender_price = 0 
-ps5_price = 0 
-battery_price = 0 
-dst_price = 0 
-video_price = 0 
-onclick_score = 0
-onclick_upgrade_function1 = "false"
-cursor_score = 0
-blenders_speed = 0
-click_update1_remember = "false"
-cursor_update1_remember = "false"
-blenders_speed_update1_remember = "false"
-blenders_speed_update2_remember = "false"
-click_update2_remember = "false"
-quantity_of_cursors = 0
-quantity_of_old_blenders = 0
-quantity_of_ps5s = 0
-quantity_of_batterys = 0
-quantity_of_dsts = 0
-quantity_of_videos = 0
-
-
-localStorage.clear()
-
 localStorage.setItem("score", score)
 localStorage.setItem("maxScore", maxScore);
 localStorage.setItem("format_score", format_score)
@@ -160,6 +141,8 @@ localStorage.setItem("cursor_update1_remember", cursor_update1_remember)
 localStorage.setItem("blenders_speed_update1_remember", blenders_speed_update1_remember)
 localStorage.setItem("blenders_speed_update2_remember", blenders_speed_update2_remember)
 localStorage.setItem("click_update2_remember", click_update2_remember)
+localStorage.setItem("old_blender_update2_remember", blenders_speed_update2_remember)
+localStorage.setItem("cursor_update2_remember", click_update2_remember)
 
 
 localStorage.setItem("quantity_of_old_blenders", quantity_of_old_blenders)
@@ -189,6 +172,8 @@ cursor_update1_remember = "false"
 blenders_speed_update1_remember = "false"
 blenders_speed_update2_remember = "false"
 click_update2_remember = "false"
+old_blender_update1_remember = "false"
+cursor_update2_remember = "false"
 quantity_of_cursors = 0
 quantity_of_old_blenders = 0
 quantity_of_ps5s = 0
@@ -237,6 +222,10 @@ if (cursor_score == 0) {
     cursor_score = 0.5
 }
 
+if (old_blender_score == 0) {
+    old_blender_score = 2
+}
+
 if (blenders_speed == 0){
     blenders_speed = 1
 }
@@ -262,6 +251,10 @@ if (click_update2_remember == "true") {
     visibility_click_update2.classList.add('hide')
 } 
 
+if (old_blender_update1_remember == "true") {
+    visibility_old_blender_update1.classList.add('hide')
+} 
+
 
 
 if (click_update1_remember == null) {
@@ -283,6 +276,14 @@ if (blenders_speed_update2_remember == null) {
 if (click_update2_remember == null) {
     click_update2_remember = "false"
 } 
+
+if (cursor_update2_remember == null) {
+    cursor_update2_remember = "false"
+} 
+
+if (old_blender_update1_remember == null) {
+    old_blender_update1_remember = "false"
+}
 
 
 
@@ -349,6 +350,29 @@ setInterval(function(){
           }
 
 
+             if(quantity_of_cursors >= 10) {
+                if(cursor_update2_remember == "false"){
+                   visibility_cursor_update2.classList.remove('hide')
+                } else {
+                visibility_cursor_update2.classList.add('hide')
+               } 
+            } else {
+                visibility_cursor_update2.classList.add('hide')
+          }
+
+
+             if(quantity_of_old_blenders >= 25) {
+                if(old_blender_update1_remember == "false"){
+                   visibility_old_blender_update1.classList.remove('hide')
+                } else {
+                visibility_old_blender_update1.classList.add('hide')
+               } 
+            } else {
+                visibility_old_blender_update1.classList.add('hide')
+          }
+
+
+
 },1)
 
 setInterval(function (){
@@ -365,12 +389,24 @@ setInterval(function (){
        localStorage.setItem("format_cursor_price", format_cursor_price)
          print_cursor_price.innerHTML = format_cursor_price
 
+if(score >= cursor_price){
+    print_cursor_price.classList.add('green_price')
+} else {
+     print_cursor_price.classList.remove('green_price')
+}
+
 
 
     format_old_blender_price = formatNum(old_blender_price)
 
        localStorage.setItem("format_old_blender_price", format_old_blender_price)
          print_old_blender_price.innerHTML = format_old_blender_price
+
+if(score >= old_blender_price){
+    print_old_blender_price.classList.add('green_price')
+} else {
+     print_old_blender_price.classList.remove('green_price')
+}
 
 
 
@@ -379,6 +415,11 @@ format_ps5_price = formatNum(ps5_price)
        localStorage.setItem("format_ps5_price", format_ps5_price)
          print_ps5_price.innerHTML = format_ps5_price
 
+if(score >= ps5_price){
+    print_ps5_price.classList.add('green_price')
+} else {
+     print_ps5_price.classList.remove('green_price')
+}
 
 
 format_battery_price = formatNum(battery_price)
@@ -386,11 +427,23 @@ format_battery_price = formatNum(battery_price)
        localStorage.setItem("format_battery_price", format_battery_price)
          print_battery_price.innerHTML = format_battery_price
 
+if(score >= battery_price){
+    print_battery_price.classList.add('green_price')
+} else {
+     print_battery_price.classList.remove('green_price')
+}
+
 
 format_dst_price = formatNum(dst_price)
 
        localStorage.setItem("format_dst_price", format_dst_price)
          print_dst_price.innerHTML = format_dst_price
+
+if(score >= dst_price){
+    print_dst_price.classList.add('green_price')
+} else {
+     print_dst_price.classList.remove('green_price')
+}
 
 
     
@@ -398,6 +451,12 @@ format_video_price = formatNum(video_price)
 
        localStorage.setItem("format_video_price", format_video_price)
          print_video_price.innerHTML = format_video_price
+
+if(score >= video_price){
+    print_video_price.classList.add('green_price')
+} else {
+     print_video_price.classList.remove('green_price')
+}
 
 
 
@@ -408,9 +467,9 @@ format_video_price = formatNum(video_price)
 
 
 
-              print_old_blender_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((quantity_of_old_blenders * 5) * blenders_speed)) + " blenders per sec." 
+              print_old_blender_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((quantity_of_old_blenders * old_blender_score) * blenders_speed)) + " blenders per sec." 
               + `<br><br>` 
-              + "Each old blender creates " + formatInfoItemNum(Number((2) * blenders_speed)) + " blenders per sec."
+              + "Each old blender creates " + formatInfoItemNum(Number((old_blender_score) * blenders_speed)) + " blenders per sec."
 
 
 
@@ -806,11 +865,65 @@ function click_update2() {
 }
 
 
+function cursor_update2() {
+    if (score >= 5000) {
+    visibility_cursor_update2.classList.add('hide')
+      score = Number((score - 5000).toFixed(0))
+
+      cursor_update2_remember = "true"
+
+          cursor_score = Number(cursor_score * 2)
+
+           updateBPS()
+           
+    } else {
+
+            alert("Иди работай чтобы заработать блендеров")
+
+    }
+       printScore.innerHTML = "blenders: " + format_score
+    printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_sec)
+      
+
+    localStorage.setItem("cursor_update2_remember", cursor_update2_remember)
+    localStorage.setItem("cursor_score", cursor_score)
+    localStorage.setItem("score", score)
+    localStorage.setItem("format_score", format_score)
+}
+
+
+function old_blender_update1() {
+    if (score >= 15000) {
+    visibility_old_blender_update1.classList.add('hide')
+      score = Number((score - 15000).toFixed(0))
+
+      old_blender_update1_remember = "true"
+
+          old_blender_score = Number(old_blender_score * 2)
+
+           updateBPS()
+           
+    } else {
+
+            alert("Иди работай чтобы заработать блендеров")
+
+    }
+       printScore.innerHTML = "blenders: " + format_score
+    printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_sec)
+      
+
+    localStorage.setItem("old_blender_update1_remember", old_blender_update1_remember)
+    localStorage.setItem("old_blender_score", old_blender_score)
+    localStorage.setItem("score", score)
+    localStorage.setItem("format_score", format_score)
+}
+
+
 
 function updateBPS() {
 
     bln_per_sec = Number(((quantity_of_cursors * cursor_score) 
-    + (quantity_of_old_blenders * 2) 
+    + (quantity_of_old_blenders * old_blender_score) 
     + ((quantity_of_ps5s * 20) + (quantity_of_batterys * (quantity_of_ps5s * 20)/100))    //(quantity_of_ps5s * 20)/100 это 1% от пс5
     + (quantity_of_batterys * 35)
     + ((quantity_of_dsts * 150) + (quantity_of_old_blenders * ((quantity_of_dsts * 150)/100) * 2))
