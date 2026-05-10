@@ -149,7 +149,7 @@ let quantity_of_generators = Number(localStorage.getItem("quantity_of_generators
 downloadStorage()
 
 
- score = 1000000
+ score = 0
 format_score = score
 maxScore = 0
 bln_per_sec = 0
@@ -1121,7 +1121,7 @@ document.addEventListener("visibilitychange", function () {
 
         let secondsPassed = (now - lastTime) / 1000
 
-        score += (secondsPassed * bln_per_sec) * 0.7
+        score += (secondsPassed * bln_per_sec) * 0.75
 
     localStorage.removeItem("lastTime")
 
