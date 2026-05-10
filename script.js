@@ -149,7 +149,7 @@ let quantity_of_generators = Number(localStorage.getItem("quantity_of_generators
 downloadStorage()
 
 
-/* score = 1000000
+ score = 1000000
 format_score = score
 maxScore = 0
 bln_per_sec = 0
@@ -186,7 +186,7 @@ quantity_of_videos = 0
 quantity_of_new_blenders = 0
 quantity_of_computers = 0
 quantity_of_generators = 0
-localStorage.clear() */
+localStorage.clear() 
 
 if (score == 0 || score == null) {
     score = 0
@@ -1121,7 +1121,7 @@ document.addEventListener("visibilitychange", function () {
 
         let secondsPassed = (now - lastTime) / 1000
 
-        score += (secondsPassed * bln_per_sec) * 0.8
+        score += (secondsPassed * bln_per_sec) * 0.7
 
     localStorage.removeItem("lastTime")
 
