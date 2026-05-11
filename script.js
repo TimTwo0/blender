@@ -2,6 +2,8 @@ let circle = document.getElementById('circle')
 let shop = document.getElementById('shop')
 let onclick_score = Number(localStorage.getItem('onclick_score'))
 
+let bln_per_sec_mult = 1
+bln_per_sec_mult = 1
 
 let patch_note = document.getElementById('patch_note')
     patch_note.classList.add('hide')
@@ -16,6 +18,14 @@ let blenders_speed = Number(localStorage.getItem('blenders_speed'))
 
 let toggle_button1 = document.getElementById('toggle_button1')
 let toggle_button2 = document.getElementById('toggle_button2')
+
+
+
+let golden_blender = document.getElementById("golden_blender")
+golden_blender.classList.add('hide')
+
+let print_golden_blender_text = document.getElementById("print_golden_blender_text")
+print_golden_blender_text.classList.add('hide')
 
 
 
@@ -66,7 +76,6 @@ let print_video_info = document.getElementById('video_info')
 let print_new_blender_info = document.getElementById('new_blender_info')
 let print_computer_info = document.getElementById('computer_info')
 let print_generator_info = document.getElementById('generator_info')
-
 
 
 let click_update1_remember = localStorage.getItem('click_update1_remember') || "false"
@@ -126,6 +135,7 @@ let quantity_of_generators = Number(localStorage.getItem("quantity_of_generators
 
 
 downloadStorage()
+updateBPS()
 
 
 /*
@@ -281,6 +291,16 @@ print_generator_price.innerHTML = format_generator_price
 
 printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_sec)
 
+
+
+setInterval(function(){
+    let chance = Math.floor(Math.random() * 5)
+
+if(chance == 1){
+
+    spawnGoldenBlender()
+ }
+}, 300000)
 
 
 setInterval(function(){
@@ -511,65 +531,65 @@ if(score >= generator_price){
 
 
 
-              print_cursor_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((quantity_of_cursors * cursor_score) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number(((((quantity_of_cursors * cursor_score) * blenders_speed) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
+              print_cursor_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((quantity_of_cursors * cursor_score) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number((((((quantity_of_cursors * cursor_score) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
               + `<br><br>` 
-              + "Each cursor creates " + formatInfoItemNum(Number((cursor_score) * blenders_speed)) + " blenders per sec. "
+              + "Each cursor creates " + formatInfoItemNum(Number(((cursor_score) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec. "
 
 
 
-              print_old_blender_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((quantity_of_old_blenders * old_blender_score) * blenders_speed)) + " blenders per sec." 
-              +  " ( " + Number(((((quantity_of_old_blenders * old_blender_score) * blenders_speed) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
+              print_old_blender_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((quantity_of_old_blenders * old_blender_score) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec." 
+              +  " ( " + Number((((((quantity_of_old_blenders * old_blender_score) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
               + `<br><br>` 
-              + "Each old blender creates " + formatInfoItemNum(Number((old_blender_score) * blenders_speed)) + " blenders per sec."
+              + "Each old blender creates " + formatInfoItemNum(Number(((old_blender_score) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
 
 
 
-              print_ps5_info.innerHTML = `<b>` + "Gain +1% blenders for each battery." + `</b>` + `<br><br>` + formatInfoItemNum(Number((quantity_of_ps5s * ps5_score + (quantity_of_batterys * (quantity_of_ps5s * ps5_score)/100)) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number(((quantity_of_ps5s * ps5_score + (quantity_of_batterys * (quantity_of_ps5s * ps5_score)/100) * blenders_speed) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
+              print_ps5_info.innerHTML = `<b>` + "Gain +1% blenders for each battery." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((quantity_of_ps5s * ps5_score + (quantity_of_batterys * (quantity_of_ps5s * ps5_score)/100)) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number((((quantity_of_ps5s * ps5_score + (quantity_of_batterys * (quantity_of_ps5s * ps5_score)/100) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
               + `<br><br>` 
-              + "Each PS5 creates " + formatInfoItemNum(Number(((ps5_score + (quantity_of_batterys * (ps5_score)/100)))) * blenders_speed) + " blenders per sec."
+              + "Each PS5 creates " + formatInfoItemNum(Number((((ps5_score + (quantity_of_batterys * (ps5_score)/100)))) * blenders_speed) * bln_per_sec_mult) + " blenders per sec."
 
 
 
-              print_battery_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((quantity_of_batterys * 35) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number(((((quantity_of_batterys * 35) * blenders_speed) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
+              print_battery_info.innerHTML = `<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((quantity_of_batterys * 35) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number((((((quantity_of_batterys * 35) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
               + `<br><br>`
-              + "Each battery creates " + formatInfoItemNum(Number((35) * blenders_speed)) + " blenders per sec."
+              + "Each battery creates " + formatInfoItemNum(Number(((35) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
 
 
 
-              print_dst_info.innerHTML = `<b>` + "Gain +2% blenders for each old blender." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((quantity_of_dsts * 150) + (quantity_of_old_blenders * ((quantity_of_dsts * 150)/100) * 2)) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number((((quantity_of_dsts * 150) + (quantity_of_old_blenders * ((quantity_of_dsts * 150)/100) * 2) * blenders_speed) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
+              print_dst_info.innerHTML = `<b>` + "Gain +2% blenders for each old blender." + `</b>` + `<br><br>` + formatInfoItemNum(Number((((quantity_of_dsts * 150) + (quantity_of_old_blenders * ((quantity_of_dsts * 150)/100) * 2)) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number(((((quantity_of_dsts * 150) + (quantity_of_old_blenders * ((quantity_of_dsts * 150)/100) * 2) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
               + `<br><br>`
-              + "Each DST creates " + formatInfoItemNum(Number(((150) + (quantity_of_old_blenders * ((150)/100) * 2)) * blenders_speed)) + " blenders per sec."
+              + "Each DST creates " + formatInfoItemNum(Number((((150) + (quantity_of_old_blenders * ((150)/100) * 2)) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
 
 
 
-               print_video_info.innerHTML = `<b>` + "Gain +1% blenders for each old blender." + `</b>` + `<br><br>` + formatInfoItemNum(Number((((quantity_of_videos * 1250) + (quantity_of_old_blenders * (quantity_of_videos * 1250)/100))) * blenders_speed)) + " blenders per sec."
-            +  " ( " + Number((((quantity_of_videos * 1250) + (quantity_of_old_blenders * ((quantity_of_videos * 1250)/100)) * blenders_speed) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
+               print_video_info.innerHTML = `<b>` + "Gain +1% blenders for each old blender." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((((quantity_of_videos * 1250) + (quantity_of_old_blenders * (quantity_of_videos * 1250)/100))) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+            +  " ( " + Number(((((quantity_of_videos * 1250) + (quantity_of_old_blenders * ((quantity_of_videos * 1250)/100)) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
               + `<br><br>`
-              + "Each video creates " + formatInfoItemNum(Number(((1250) + (quantity_of_old_blenders * (1250)/100)) * blenders_speed)) + " blenders per sec."
+              + "Each video creates " + formatInfoItemNum(Number((((1250) + (quantity_of_old_blenders * (1250)/100)) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
 
 
 
-              print_new_blender_info.innerHTML =`<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((((quantity_of_new_blenders * 7650) )) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number(((((quantity_of_new_blenders * 7650) * blenders_speed) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
+              print_new_blender_info.innerHTML =`<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((((quantity_of_new_blenders * 7650) )) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number((((((quantity_of_new_blenders * 7650) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
               + `<br><br>`
-              + "Each new blender creates " + formatInfoItemNum(Number(((7650) * blenders_speed))) + " blenders per sec."
+              + "Each new blender creates " + formatInfoItemNum(Number((((7650) * blenders_speed) * bln_per_sec_mult))) + " blenders per sec."
 
 
-              print_computer_info.innerHTML =`<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((((quantity_of_computers * 42500) )) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number(((((quantity_of_computers * 42500) * blenders_speed) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
+              print_computer_info.innerHTML =`<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((((quantity_of_computers * 42500) )) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number((((((quantity_of_computers * 42500) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
               + `<br><br>`
-              + "Each computer creates " + formatInfoItemNum(Number(((42500) * blenders_speed))) + " blenders per sec."
+              + "Each computer creates " + formatInfoItemNum(Number((((42500) * blenders_speed))) * bln_per_sec_mult) + " blenders per sec."
 
 
 
-               print_generator_info.innerHTML =`<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number((((quantity_of_generators * 255000) )) * blenders_speed)) + " blenders per sec."
-              +  " ( " + Number(((((quantity_of_generators * 255000) * blenders_speed) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
+               print_generator_info.innerHTML =`<b>` + "There is no abilities yet." + `</b>` + `<br><br>` + formatInfoItemNum(Number(((((quantity_of_generators * 255000) )) * blenders_speed)) * bln_per_sec_mult) + " blenders per sec."
+              +  " ( " + Number((((((quantity_of_generators * 255000) * blenders_speed) * bln_per_sec_mult) / bln_per_sec) * 100)).toFixed(1) + "%" + " )"
               + `<br><br>`
-              + "Each computer creates " + formatInfoItemNum(Number(((255000) * blenders_speed))) + " blenders per sec."
+              + "Each computer creates " + formatInfoItemNum(Number((((255000) * blenders_speed) * bln_per_sec_mult))) + " blenders per sec."
 
 
 
@@ -996,7 +1016,7 @@ downloadStorage()
 
 function updateBPS() {
 
-    bln_per_sec = Number(((quantity_of_cursors * cursor_score) 
+    bln_per_sec = Number((((quantity_of_cursors * cursor_score) 
     + (quantity_of_old_blenders * old_blender_score) 
     + ((quantity_of_ps5s * ps5_score) + (quantity_of_batterys * (quantity_of_ps5s * 20)/100))    //(quantity_of_ps5s * 20)/100 это 1% от пс5
     + (quantity_of_batterys * 35)
@@ -1006,7 +1026,7 @@ function updateBPS() {
     + ((quantity_of_computers * 42500))
     + ((quantity_of_generators * 255000))
 
-    ) * blenders_speed)
+    ) * blenders_speed) * bln_per_sec_mult)
 
 downloadStorage()
 
@@ -1104,6 +1124,53 @@ if(num >= 1e3) {
 
 function patch_note_visibility() {
     patch_note.classList.toggle('hide')
+}
+
+
+function spawnGoldenBlender() {
+
+    let maxX = window.innerWidth - 120;
+    let maxY = window.innerHeight - 120;
+
+    golden_blender.style.left = Math.random() * maxX + 'px';
+    golden_blender.style.top = Math.random() * maxY + 'px';
+
+    golden_blender.classList.remove("hide")
+     golden_blender.classList.add("active_golden_blender")
+
+
+    setTimeout(function() {
+
+            golden_blender.classList.remove("active_golden_blender")
+
+        golden_blender.classList.add("hide")
+
+    }, 7000)
+}
+
+function clickGoldenBlender() {
+
+    golden_blender.classList.add("hide")
+
+    bln_per_sec_mult = 7
+
+    updateBPS()
+
+        print_golden_blender_text.classList.remove('hide')
+print_golden_blender_text.innerHTML = "x7 income for 30 seconds!"
+
+setTimeout(function() {
+    print_golden_blender_text.classList.add('hide')
+}, 4000)
+
+
+    setTimeout(function() {
+        bln_per_sec_mult = 1
+
+
+        updateBPS()
+
+    }, 30000)
 }
 
 
