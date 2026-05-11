@@ -242,6 +242,13 @@ if (blenders_speed == 0 || blenders_speed == null){
     blenders_speed = 1
 }
 
+if (click_update1_remember == "true") {
+    visibility_click_update1.classList.add('hide')
+}
+
+if (cursor_update1_remember == "true") {
+    visibility_cursor_update1.classList.add('hide')
+}
 
 
 if (onclick_upgrade_function1 == null || onclick_upgrade_function1 == 0) {
