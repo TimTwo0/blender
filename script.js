@@ -69,38 +69,17 @@ let print_generator_info = document.getElementById('generator_info')
 
 
 
-let click_update1_remember = "false"
-click_update1_remember = localStorage.getItem('click_update1_remember')
-
-let cursor_update1_remember = "false"
-cursor_update1_remember = localStorage.getItem('cursor_update1_remember')
-
-let blenders_speed_update1_remember = "false"
-blenders_speed_update1_remember = localStorage.getItem('blenders_speed_update1_remember')
-
-let blenders_speed_update2_remember = "false"
-blenders_speed_update2_remember = localStorage.getItem('blenders_speed_update2_remember')
-
-let blenders_speed_update3_remember = "false"
-blenders_speed_update3_remember = localStorage.getItem('blenders_speed_update3_remember')
-
-let click_update2_remember = "false"
-click_update2_remember = localStorage.getItem('click_update2_remember')
-
-let cursor_update2_remember = "false"
-cursor_update2_remember = localStorage.getItem('cursor_update2_remember')
-
-let cursor_update3_remember = "false"
-cursor_update3_remember = localStorage.getItem('cursor_update3_remember')
-
-let old_blender_update1_remember = "false"
-old_blender_update1_remember = localStorage.getItem('old_blender_update1_remember')
-
-let old_blender_update2_remember = "false"
-old_blender_update2_remember = localStorage.getItem('old_blender_update2_remember')
-
-let ps5_update1_remember = "false"
-ps5_update1_remember = localStorage.getItem('ps5_update1_remember')
+let click_update1_remember = localStorage.getItem('click_update1_remember') || "false"
+let cursor_update1_remember = localStorage.getItem('cursor_update1_remember') || "false"
+let blenders_speed_update1_remember = localStorage.getItem('blenders_speed_update1_remember') || "false"
+let blenders_speed_update2_remember = localStorage.getItem('blenders_speed_update2_remember') || "false"
+let blenders_speed_update3_remember = localStorage.getItem('blenders_speed_update3_remember') || "false"
+let click_update2_remember = localStorage.getItem('click_update2_remember') || "false"
+let cursor_update2_remember = localStorage.getItem('cursor_update2_remember') || "false"
+let cursor_update3_remember = localStorage.getItem('cursor_update3_remember') || "false"
+let old_blender_update1_remember = localStorage.getItem('old_blender_update1_remember') || "false"
+let old_blender_update2_remember = localStorage.getItem('old_blender_update2_remember') || "false"
+let ps5_update1_remember = localStorage.getItem('ps5_update1_remember') || "false"
 
 
 
@@ -148,12 +127,14 @@ let quantity_of_generators = Number(localStorage.getItem("quantity_of_generators
 
 downloadStorage()
 
+
 /*
+
 let wipeAllPlayers = true
 
 if (wipeAllPlayers) {
 
- score = 0
+ score = 100000000
 format_score = score
 maxScore = 0
 bln_per_sec = 0
@@ -260,99 +241,6 @@ if (ps5_score == 0 || ps5_score == null) {
 if (blenders_speed == 0 || blenders_speed == null){
     blenders_speed = 1
 }
-
-
-
-if (click_update1_remember == "true") {
-    visibility_click_update1.classList.add('hide')
-} 
-
-if (cursor_update1_remember == "true") {
-    visibility_cursor_update1.classList.add('hide')
-} 
-
-if (cursor_update2_remember == "true") {
-    visibility_cursor_update2.classList.add('hide')
-} 
-
-if (cursor_update3_remember == "true") {
-    visibility_cursor_update3.classList.add('hide')
-} 
-
-if (blenders_speed_update1_remember == "true") {
-    visibility_blenders_speed_update1.classList.add('hide')
-} 
-
-if (blenders_speed_update2_remember == "true") {
-    visibility_blenders_speed_update2.classList.add('hide')
-} 
-
-if (blenders_speed_update3_remember == "true") {
-    visibility_blenders_speed_update3.classList.add('hide')
-} 
-
-if (click_update2_remember == "true") {
-    visibility_click_update2.classList.add('hide')
-} 
-
-if (old_blender_update1_remember == "true") {
-    visibility_old_blender_update1.classList.add('hide')
-} 
-
-if (old_blender_update2_remember == "true") {
-    visibility_old_blender_update2.classList.add('hide')
-} 
-
-if (ps5_update1_remember == "true") {
-    visibility_ps5_update1.classList.add('hide')
-} 
-
-
-
-if (click_update1_remember == null) {
-    click_update1_remember = "false"
-} 
-
-if (cursor_update1_remember == null) {
-    cursor_update1_remember = "false"
-} 
-
-if (blenders_speed_update1_remember == null) {
-    blenders_speed_update1_remember = "false"
-} 
-
-if (blenders_speed_update2_remember == null) {
-    blenders_speed_update2_remember = "false"
-} 
-
-if (blenders_speed_update3_remember == null) {
-    blenders_speed_update3_remember = "false"
-} 
-
-if (click_update2_remember == null) {
-    click_update2_remember = "false"
-} 
-
-if (cursor_update2_remember == null) {
-    cursor_update2_remember = "false"
-} 
-
-if (cursor_update3_remember == null) {
-    cursor_update3_remember = "false"
-} 
-
-if (old_blender_update1_remember == null) {
-    old_blender_update1_remember = "false"
-}
-
-if (old_blender_update2_remember == null) {
-    old_blender_update2_remember = "false"
-}
-
-if (ps5_update1_remember == null) {
-    ps5_update1_remember = "false"
-}
-
 
 
 
@@ -652,7 +540,7 @@ if(score >= generator_price){
 
 
                print_video_info.innerHTML = `<b>` + "Gain +1% blenders for each old blender." + `</b>` + `<br><br>` + formatInfoItemNum(Number((((quantity_of_videos * 1250) + (quantity_of_old_blenders * (quantity_of_videos * 1250)/100))) * blenders_speed)) + " blenders per sec."
-            +  " ( " + Number((((quantity_of_videos * 1250) + (quantity_of_old_blenders * ((quantity_of_videos * 1250)/100) * 2) * blenders_speed) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
+            +  " ( " + Number((((quantity_of_videos * 1250) + (quantity_of_old_blenders * ((quantity_of_videos * 1250)/100)) * blenders_speed) / bln_per_sec) * 100).toFixed(1) + "%" + " )"
               + `<br><br>`
               + "Each video creates " + formatInfoItemNum(Number(((1250) + (quantity_of_old_blenders * (1250)/100)) * blenders_speed)) + " blenders per sec."
 
