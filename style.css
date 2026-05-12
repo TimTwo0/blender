@@ -1,6 +1,5 @@
 body {
   background-image: url('https://cookieclicker.wiki.gg/images/thumb/BgPurple.jpg/320px-BgPurple.jpg?32cf96');
-  overflow-x: hidden; 
 }
 
 .patch_note_button {
@@ -459,5 +458,11 @@ opacity: 1;
     .print_golden_blender_text {
     top: -325px;
     left: 20px;
+    }
+
+    .shop {
+          position: absolute;
+          right: -50px;
+          top: -24px;
     }
 }
