@@ -304,7 +304,7 @@ if(chance == 1){
 
     spawnGoldenBlender()
  }
-}, 1000)
+}, 300000)
 
 
 setInterval(function(){
