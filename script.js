@@ -2,6 +2,10 @@ let circle = document.getElementById('circle')
 let shop = document.getElementById('shop')
 let onclick_score = Number(localStorage.getItem('onclick_score'))
 
+
+let glow_screen = document.getElementById('glow_screen')
+glow_screen.classList.add('hide')
+
 let bln_per_sec_mult = 1
 bln_per_sec_mult = 1
 
@@ -300,7 +304,7 @@ if(chance == 1){
 
     spawnGoldenBlender()
  }
-}, 300000)
+}, 1000)
 
 
 setInterval(function(){
@@ -1045,7 +1049,7 @@ document.addEventListener("visibilitychange", function () {
 
         let secondsPassed = (now - lastTime) / 1000
 
-        score += (secondsPassed * bln_per_sec) * 0.75
+        score += ((secondsPassed * bln_per_sec) / bln_per_sec_mult) * 0.75
 
     localStorage.removeItem("lastTime")
 
@@ -1157,20 +1161,31 @@ function clickGoldenBlender() {
     updateBPS()
 
         print_golden_blender_text.classList.remove('hide')
-print_golden_blender_text.innerHTML = "x7 income for 30 seconds!"
+    glow_screen.classList.remove('hide')
+
+
+print_golden_blender_text.innerHTML = `<b>` + "Frenzy" + `</b><br>` + "x7 income for 30 seconds!"
+
+print_golden_blender_text.classList.add('active_golden_blender_text')
 
 setTimeout(function() {
+
+      print_golden_blender_text.classList.remove('active_golden_blender_text')
     print_golden_blender_text.classList.add('hide')
-}, 4000)
+
+}, 3000)
 
 
     setTimeout(function() {
-        bln_per_sec_mult = 1
 
+        bln_per_sec_mult = 1
 
         updateBPS()
 
+        glow_screen.classList.add('hide')
+
     }, 30000)
+
 }
 
 
