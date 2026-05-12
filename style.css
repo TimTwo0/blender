@@ -287,6 +287,12 @@ pointer-events: all;
   z-index: 1;
 }
 
+.img_get_lucky_update {
+  position: relative;
+  width: 45px;
+  z-index: 1;
+}
+
 .bonuses {
   color: rgb(255, 255, 255);
   position: relative;
@@ -398,7 +404,7 @@ opacity: 1;
 }
 
 .golden_blender.active_golden_blender {
-    animation: golden_float 7s linear;
+    animation: golden_float 10s linear;
 }
 
 
@@ -421,6 +427,7 @@ opacity: 1;
         90% { transform: scale(1); opacity: 1; top: -360px;}
         100% { transform: scale(1); opacity: 0; top: -360px;}
     }
+
 
 .print_golden_blender_text {
     font-family: Georgia, serif;

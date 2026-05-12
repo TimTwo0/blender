@@ -18,6 +18,7 @@ let cursor_score = Number(localStorage.getItem('cursor_score'))
 let old_blender_score = Number(localStorage.getItem('old_blender_score'))
 let ps5_score = Number(localStorage.getItem('ps5_score'))
 let blenders_speed = Number(localStorage.getItem('blenders_speed'))
+let golden_blender_kd = Number(localStorage.getItem('golden_blender_kd'))
 
 
 let toggle_button1 = document.getElementById('toggle_button1')
@@ -33,6 +34,7 @@ print_golden_blender_text.classList.add('hide')
 
 
 
+let visibility_get_lucky_update1 = document.getElementById('get_lucky_update1')
 let visibility_click_update1 = document.getElementById('click_update1')
 let visibility_cursor_update1 = document.getElementById('cursor_update1')
 let visibility_blenders_speed_update1 = document.getElementById('blenders_speed_update1')
@@ -82,6 +84,7 @@ let print_computer_info = document.getElementById('computer_info')
 let print_generator_info = document.getElementById('generator_info')
 
 
+let get_lucky_update1_remember = localStorage.getItem('get_lucky_update1_remember') || "false"
 let click_update1_remember = localStorage.getItem('click_update1_remember') || "false"
 let cursor_update1_remember = localStorage.getItem('cursor_update1_remember') || "false"
 let blenders_speed_update1_remember = localStorage.getItem('blenders_speed_update1_remember') || "false"
@@ -138,6 +141,8 @@ let quantity_of_computers = Number(localStorage.getItem("quantity_of_computers")
 let quantity_of_generators = Number(localStorage.getItem("quantity_of_generators"))
 
 
+let quantity_of_used_golden_blenders = Number(localStorage.getItem("quantity_of_used_golden_blenders"))
+
 downloadStorage()
 updateBPS()
 
@@ -162,6 +167,7 @@ new_blender_price = 0
 computer_price = 0 
 generator_price = 0 
 onclick_score = 0
+golden_blender_kd = 0
 onclick_upgrade_function1 = "false"
 click_update1_remember = "false"
 cursor_update1_remember = "false"
@@ -174,6 +180,7 @@ old_blender_update2_remember = "false"
 cursor_update2_remember = "false"
 cursor_update3_remember = "false"
 ps5_update1_remember = "false"
+get_lucky_update1_remember = "false"
 cursor_score = 0
 blenders_speed = 0
 quantity_of_cursors = 0
@@ -185,6 +192,8 @@ quantity_of_videos = 0
 quantity_of_new_blenders = 0
 quantity_of_computers = 0
 quantity_of_generators = 0
+
+quantity_of_used_golden_blenders = 0
 
     localStorage.clear()
      wipeAllPlayers = false
@@ -256,6 +265,11 @@ if (blenders_speed == 0 || blenders_speed == null){
     blenders_speed = 1
 }
 
+if (golden_blender_kd == 0 || golden_blender_kd == null){
+    golden_blender_kd = 300000
+}
+
+
 if (click_update1_remember == "true") {
     visibility_click_update1.classList.add('hide')
 }
@@ -298,17 +312,16 @@ printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_
 
 
 setInterval(function(){
-    let chance = Math.floor(Math.random() * 5)
+    let chance = Math.floor(Math.random() * 3)
 
-if(chance == 1){
+if(chance == 0){
 
     spawnGoldenBlender()
  }
-}, 300000)
+}, golden_blender_kd)
 
 
 setInterval(function(){
-
 
               if(maxScore >= 10000) {
                 if(blenders_speed_update1_remember == "false"){
@@ -407,6 +420,17 @@ setInterval(function(){
             } else {
                 visibility_ps5_update1.classList.add('hide')
           }
+
+           if(quantity_of_used_golden_blenders >= 1) {
+                if(get_lucky_update1_remember == "false"){
+                   visibility_get_lucky_update1.classList.remove('hide')
+                } else {
+                visibility_get_lucky_update1.classList.add('hide')
+               } 
+            } else {
+                visibility_get_lucky_update1.classList.add('hide')
+          }
+
 
 
 
@@ -1018,6 +1042,24 @@ downloadStorage()
 }
 
 
+function get_lucky_update1() {
+    if (score >= 77777000) {
+    visibility_get_lucky_update1.classList.add('hide')
+      score = Number((score - 77777000).toFixed(0))
+
+      get_lucky_update1_remember = "true"
+
+          golden_blender_kd = Number(golden_blender_kd / 2)
+
+           updateBPS()
+    }
+       printScore.innerHTML = "blenders: " + format_score
+    printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_sec)
+      
+downloadStorage()
+}
+
+
 function updateBPS() {
 
     bln_per_sec = Number((((quantity_of_cursors * cursor_score) 
@@ -1041,6 +1083,7 @@ document.addEventListener("visibilitychange", function () {
 
     if (document.hidden) {
 
+     localStorage.setItem("golden_blender_kd", golden_blender_kd)
         localStorage.setItem("lastTime", Date.now())
 
     } else {
@@ -1056,6 +1099,7 @@ document.addEventListener("visibilitychange", function () {
         printScore.innerHTML = "blenders: " + format_score
         localStorage.setItem("score", score)
         localStorage.setItem("format_score", format_score)
+        localStorage.setItem("golden_blender_kd", golden_blender_kd)
     }
 })
 
@@ -1149,7 +1193,7 @@ function spawnGoldenBlender() {
 
         golden_blender.classList.add("hide")
 
-    }, 7000)
+    }, 10000)
 }
 
 function clickGoldenBlender() {
@@ -1157,11 +1201,16 @@ function clickGoldenBlender() {
     golden_blender.classList.add("hide")
 
     bln_per_sec_mult = 7
+    quantity_of_used_golden_blenders = Number(quantity_of_used_golden_blenders + 1)
 
     updateBPS()
 
         print_golden_blender_text.classList.remove('hide')
     glow_screen.classList.remove('hide')
+
+    
+
+localStorage.setItem("quantity_of_used_golden_blenders", quantity_of_used_golden_blenders)
 
 
 print_golden_blender_text.innerHTML = `<b>` + "Frenzy" + `</b><br>` + "x7 income for 30 seconds!"
@@ -1212,6 +1261,7 @@ localStorage.setItem("onclick_upgrade_function1", onclick_upgrade_function1)
 localStorage.setItem("cursor_score", cursor_score)
 localStorage.setItem("ps5_score", ps5_score)
 localStorage.setItem("blenders_speed", blenders_speed)
+localStorage.setItem("golden_blender_kd", golden_blender_kd)
 
 localStorage.setItem("format_cursor_price", format_cursor_price)
 localStorage.setItem("format_old_blender_price", format_old_blender_price)
@@ -1223,6 +1273,8 @@ localStorage.setItem("format_new_blender_price", format_new_blender_price)
 localStorage.setItem("format_computer_price", format_computer_price)
 localStorage.setItem("format_generator_price", format_generator_price)
 
+
+localStorage.setItem("get_lucky_update1_remember", get_lucky_update1_remember)
 
 localStorage.setItem("click_update1_remember", click_update1_remember)
 localStorage.setItem("cursor_update1_remember", cursor_update1_remember)
@@ -1250,4 +1302,6 @@ localStorage.setItem("quantity_of_videos", quantity_of_videos)
 localStorage.setItem("quantity_of_new_blenders", quantity_of_new_blenders)
 localStorage.setItem("quantity_of_computers", quantity_of_computers)
 localStorage.setItem("quantity_of_generators", quantity_of_generators)
+
+localStorage.setItem("quantity_of_used_golden_blenders", quantity_of_used_golden_blenders)
 }
