@@ -1,3 +1,29 @@
+let news = [
+    "Blenders have become more expensive due to global demand.",
+    "Blenders dad got another plat!",
+    "to be a blender is to be wise.",
+    "does anyone actually read this?",
+    "Blendercoin has fallen in price.",
+    "old blender > new blender.",
+    "computers have become more expensive not because of video cards, but because of stariiblender.AI.",
+    "stariiblender.AI - is your choice.",
+    "Measure 7 times, cut once, not with a blender.",
+    "No, I won't - stariiblender.",
+    "blender released a new video ( this is a myth ).",
+    "A diss track on blender was released.",
+    "sleep rough!",
+    "what a beautiful sun we have today, lets point at it?",
+    "one more spin, let chaos in.",
+    "Golden blenders, a rare but splendid event.",
+    "wipe the glass of your blender."
+]
+
+let world_news_text = document.getElementById('world_news_text')
+        world_news_text.classList.remove('world_news_text_animation')
+
+randomNews()
+
+        
 let circle = document.getElementById('circle')
 let shop = document.getElementById('shop')
 let onclick_score = Number(localStorage.getItem('onclick_score'))
@@ -309,6 +335,10 @@ print_generator_price.innerHTML = format_generator_price
 
 printScore_per_sec.innerHTML = "blenders per sec: " + formatInfoItemNum(bln_per_sec)
 
+
+setInterval(function() {
+  randomNews()
+}, 10000)
 
 
 setInterval(function(){
@@ -1236,6 +1266,22 @@ setTimeout(function() {
     }, 30000)
 
 }
+
+
+
+function randomNews() {
+
+    let random_text = news[Math.floor(Math.random() * news.length)]
+    world_news_text.innerHTML = "News: " + random_text
+
+    world_news_text.classList.add('world_news_text_animation')
+
+  setTimeout(function() {
+        world_news_text.classList.remove('world_news_text_animation')
+  }, 9990)
+
+}
+
 
 
 function downloadStorage(){
